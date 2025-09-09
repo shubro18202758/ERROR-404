@@ -1,3 +1,5 @@
+## *As the railway sector can be a significant target for terrorist and other security threats, we prioritize making our programs as secure as possible by employing robust data encryption techniques to prevent unauthorized access and data leaks*
+
 ### **AI-Powered Train Traffic Control: A Comprehensive Summary**
 
 #### **1. Project Vision & Problem Statement**
