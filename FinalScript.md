@@ -1,5 +1,3 @@
-## *As the railway sector can be a significant target for terrorist and other security threats, we prioritize making our programs as secure as possible by employing robust data encryption techniques to prevent unauthorized access and data leaks*
-
 ### **AI-Powered Train Traffic Control: A Comprehensive Summary**
 
 #### **1. Project Vision & Problem Statement**
@@ -45,6 +43,8 @@ The framework is built on a multi-layered pipeline that processes real-time data
 * **Platform CCTV Integration:** Uses edge AI modules to process CCTV feeds in real-time. It detects track intrusions (via YOLOv8) and platform overcrowding (via CrowdInsight). A track intrusion triggers a critical "HALT" command, while overcrowding alerts prompt the system to recommend mitigating actions like re-platforming trains or regulating train flow to prevent stampedes.
 
 #### **6. Safety, Security & Historical Context**
+
+## *As the railway sector can be a significant target for terrorist and other security threats, we prioritize making our programs as secure as possible by employing robust data encryption techniques to prevent unauthorized access and data leaks*
 
 The framework is fundamentally a next-generation safety system that learns from historical incidents and defends against modern threats.
 
