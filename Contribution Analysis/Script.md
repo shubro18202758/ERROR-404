@@ -248,31 +248,6 @@ Given the high bandwidth of raw video, it is inefficient and impractical to stre
 
   * **Alert Generation:** The crucial step is that the edge modules do not send video. They process the video locally and send only structured, low-bandwidth **JSON alerts** to the central AI framework when a predefined trigger is met.
 
-    **Example Alert Payloads:**
-
-    ```json
-    // Track Intrusion Alert
-    {
-      "alert_type": "TRACK_INTRUSION",
-      "timestamp": "2025-09-09T22:45:10Z",
-      "location": {
-        "station_code": "CSTM",
-        "platform": "3",
-        "track_id": "T3A"
-      },
-      "severity": "CRITICAL",
-      "details": { "object_class": "person", "confidence": 0.96 }
-    }
-
-    // Overcrowding Alert
-    {
-      "alert_type": "OVERCROWDING",
-      "timestamp": "2025-09-09T22:50:00Z",
-      "location": { "station_code": "CSTM", "platform": "5" },
-      "severity": "WARNING",
-      "details": { "density_percentage": 92 }
-    }
-    ```
 
   * **Ingestion via Kafka:** These JSON alerts are then pushed into the central **Apache Kafka** pipeline on a dedicated high-priority topic, ensuring they are processed by the core system within milliseconds.
 
