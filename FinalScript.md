@@ -2,39 +2,39 @@
 
 #### **1. Project Vision & Problem Statement**
 
-[cite_start]The project proposes an intelligent decision-support system to modernize Indian Railways' train traffic control[cite: 1]. [cite_start]The core challenge is the immense complexity of managing a vast network with diverse train types, which strains the capabilities of the current human-centric, manual control system[cite: 1]. [cite_start]The goal is to address this large-scale combinatorial optimization problem, complicated by real-time disruptions, to enhance safety, punctuality, and infrastructure utilization[cite: 1].
+The project proposes an intelligent decision-support system to modernize Indian Railways' train traffic control. The core challenge is the immense complexity of managing a vast network with diverse train types, which strains the capabilities of the current human-centric, manual control system. The goal is to address this large-scale combinatorial optimization problem, complicated by real-time disruptions, to enhance safety, punctuality, and infrastructure utilization.
 
 #### **2. Proposed AI Solution & Core Objectives**
 
-[cite_start]The solution is an integrated AI-powered Decision Support System (DSS) that assists, rather than replaces, human controllers[cite: 1].
+The solution is an integrated AI-powered Decision Support System (DSS) that assists, rather than replaces, human controllers.
 
-* [cite_start]**Model & Optimize:** Utilizes AI and operations research to generate conflict-free schedules dynamically by modeling complex operational constraints[cite: 1].
-* [cite_start]**Maximize Efficiency:** Aims to maximize section throughput while minimizing overall train travel time[cite: 1].
-* [cite_start]**Dynamic Re-optimization:** Rapidly generates new schedules in response to real-time disruptions like breakdowns or weather events[cite: 1].
-* [cite_start]**Scenario Analysis:** Supports "what-if" simulations to evaluate various routing and holding strategies[cite: 1].
-* [cite_start]**Human-in-the-Loop:** Features an intuitive interface with explainable recommendations and override capabilities for controllers[cite: 1].
+* **Model & Optimize:** Utilizes AI and operations research to generate conflict-free schedules dynamically by modeling complex operational constraints.
+* **Maximize Efficiency:** Aims to maximize section throughput while minimizing overall train travel time.
+* **Dynamic Re-optimization:** Rapidly generates new schedules in response to real-time disruptions like breakdowns or weather events.
+* **Scenario Analysis:** Supports "what-if" simulations to evaluate various routing and holding strategies.
+* **Human-in-the-Loop:** Features an intuitive interface with explainable recommendations and override capabilities for controllers.
 
 #### **3. System Architecture & Workflow**
 
 The framework is built on a multi-layered pipeline that processes real-time data to deliver actionable intelligence.
 
-* [cite_start]**Data Ingestion & Management:** This layer collects and processes data from diverse sources including real-time operations (NTES, TMS) [cite: 4, 9, 11, 12, 253, 255, 256][cite_start], historical schedules (data.gov.in) [cite: 3, 4, 6, 7, 258, 261][cite_start], infrastructure layouts (RDSO, OpenStreetMap) [cite: 13, 14, 16, 17, 263, 264, 266][cite_start], and disruption factors like weather (IMD)[cite: 18, 19, 21, 22, 270, 272, 274]. [cite_start]It yields clean CSV/JSON files for subsequent layers[cite: 2, 29, 92].
-* [cite_start]**Feature Engineering:** Raw data is transformed into meaningful features, including temporal patterns (delay propagation), spatial metrics (junction congestion), and safety constraints (headway rules)[cite: 2].
+* **Data Ingestion & Management:** This layer collects and processes data from diverse sources including real-time operations (NTES, TMS), historical schedules (data.gov.in), infrastructure layouts (RDSO, OpenStreetMap), and disruption factors like weather (IMD). It yields clean CSV/JSON files for subsequent layers.
+* **Feature Engineering:** Raw data is transformed into meaningful features, including temporal patterns (delay propagation), spatial metrics (junction congestion), and safety constraints (headway rules).
 * **The Intelligence Core:** This is the system's brain, comprising three key components:
-    1.  [cite_start]**Microscopic Simulation Engine:** A **SimPy**-based engine that models the railway network, enforces safety rules, and runs "what-if" scenarios to test resilience[cite: 171, 182, 167, 183, 184, 193].
-    2.  [cite_start]**Two-Tier Optimization Engine:** Uses **Google OR-Tools (CP-SAT Solver)** for decision-making[cite: 172, 179, 230]. [cite_start]It includes a fast "Greedy Dispatcher" for immediate (<100ms) actions and a deeper "CP-SAT Solver" for optimal planning over a 20-30 minute horizon[cite: 207, 205, 206, 210, 211, 212, 213].
-    3.  [cite_start]**Machine & Reinforcement Learning:** Employs predictive models (**XGBoost, TensorFlow, PyTorch**) for forecasting delays and a **Reinforcement Learning (RL) agent** using **OpenAI Gym** and Deep Q-Learning (DQN) to learn optimal scheduling strategies over time[cite: 32, 34, 35, 36, 38, 39, 40, 44, 47].
-* [cite_start]**Agentic RAG for Explainable AI (XAI):** A Retrieval-Augmented Generation system using tools like **LlamaIndex, LangChain,** and **ChromaDB** provides transparent, domain-aware explanations for all AI recommendations, building controller trust[cite: 2].
+    1.  **Microscopic Simulation Engine:** A **SimPy**-based engine that models the railway network, enforces safety rules, and runs "what-if" scenarios to test resilience.
+    2.  **Two-Tier Optimization Engine:** Uses **Google OR-Tools (CP-SAT Solver)** for decision-making. It includes a fast "Greedy Dispatcher" for immediate (<100ms) actions and a deeper "CP-SAT Solver" for optimal planning over a 20-30 minute horizon.
+    3.  **Machine & Reinforcement Learning:** Employs predictive models (**XGBoost, TensorFlow, PyTorch**) for forecasting delays and a **Reinforcement Learning (RL) agent** using **OpenAI Gym** and Deep Q-Learning (DQN) to learn optimal scheduling strategies over time.
+* **Agentic RAG for Explainable AI (XAI):** A Retrieval-Augmented Generation system using tools like **LlamaIndex, LangChain,** and **ChromaDB** provides transparent, domain-aware explanations for all AI recommendations, building controller trust.
 
 #### **4. Technology Stack**
 
-* [cite_start]**Data Ingestion & Processing:** Apache Kafka, Apache NiFi, Apache Spark[cite: 280, 281, 282].
-* [cite_start]**Databases:** PostgreSQL, MySQL, Redis, InfluxDB, Neo4j[cite: 81, 82, 287, 83, 84, 85, 288, 289].
-* [cite_start]**Machine Learning & Simulation:** Python (Pandas, NumPy), SimPy, Google OR-Tools (CP-SAT), XGBoost, TensorFlow, PyTorch, OpenAI Gym[cite: 87, 88, 283, 284, 285, 171, 182, 172, 179, 230, 34, 35, 36].
+* **Data Ingestion & Processing:** Apache Kafka, Apache NiFi, Apache Spark.
+* **Databases:** PostgreSQL, MySQL, Redis, InfluxDB, Neo4j.
+* **Machine Learning & Simulation:** Python (Pandas, NumPy), SimPy, Google OR-Tools (CP-SAT), XGBoost, TensorFlow, PyTorch, OpenAI Gym.
 * **Explainable AI (XAI):** LlamaIndex, LangChain, ChromaDB.
-* [cite_start]**Backend & API:** FastAPI, Flask, Spring Boot, Kong, AWS API Gateway[cite: 98, 141, 107, 145, 149, 150].
-* [cite_start]**Frontend & Visualization:** React.js, TailwindCSS, Mapbox, Leaflet.js, D3.js, Plotly.js, Recharts, Grafana[cite: 61, 69, 122, 123, 125, 72, 135, 137, 65, 127, 129, 130, 132, 133].
-* [cite_start]**DevOps:** Docker, Kubernetes, Jenkins, GitHub Actions[cite: 153, 154, 155, 157, 158, 159].
+* **Backend & API:** FastAPI, Flask, Spring Boot, Kong, AWS API Gateway.
+* **Frontend & Visualization:** React.js, TailwindCSS, Mapbox, Leaflet.js, D3.js, Plotly.js, Recharts, Grafana.
+* **DevOps:** Docker, Kubernetes, Jenkins, GitHub Actions.
 * **CCTV Integration:** CrowdInsight, RTSP Object Detection API (YOLOv8, Faster-RCNN).
 
 #### **5. Advanced Utility Integrations**
